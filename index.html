@@ -19,7 +19,7 @@
 </div>
 
 <!-- Dashboard -->
-<div class="dashboard" id="dashboard">
+<div class="dashboard" id="dashboard" style="display:none;">
   <h2>Hello, <span id="userDisplay"></span>!</h2>
   <p>Choose your mood adventure:</p>
 
@@ -30,7 +30,7 @@
     </div>
     <div class="section-card" onclick="showMoodInput('ootd')">
       <h3>OOTD</h3>
-      <p>Get fashion, hairstyles, shoes, and confidence tips.</p>
+      <p>Get fashion, hairstyles, shoes, fragrances, and confidence tips.</p>
     </div>
   </div>
 
@@ -40,7 +40,16 @@
     <button onclick="startVoiceRecognition()">🎤 Speak</button>
   </div>
 
+  <div id="aiLoading" style="display:none;">🤖 AI is thinking...</div>
+
   <div class="ai-products" id="aiProducts" style="display:none;"></div>
+
+  <!-- Cart -->
+  <div id="cartContainer" style="display:none;">
+    <h3>🛒 Your Cart</h3>
+    <div id="cartItems"></div>
+    <button onclick="checkout()">Checkout</button>
+  </div>
 </div>
 
 <script src="script.js"></script>

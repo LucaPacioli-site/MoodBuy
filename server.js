@@ -1,28 +1,31 @@
-const express = require('express');
-const cors = require('cors');
-const app = express();
-app.use(cors());
-app.use(express.json());
+const axios = require('axios'); // For API requests
 
-app.post('/api/recommend', (req, res) => {
+app.post('/api/recommend', async (req, res) => {
     const { section, mood } = req.body;
     let recommendations = [];
 
-    if(section==='cravings'){
-        recommendations=[
-            {name:'Adobo Rice', brand:'Filipino Delights', price:'₱150', img:'https://source.unsplash.com/200x150/?adobo,food'},
-            {name:'Halo-Halo', brand:'Dessert Paradise', price:'₱120', img:'https://source.unsplash.com/200x150/?halo-halo'},
-            {name:'Cheese Sticks', brand:'SnackLab', price:'₱80', img:'https://source.unsplash.com/200x150/?cheese,food'}
-        ];
-    } else if(section==='ootd'){
-        recommendations=[
-            {name:'Elegant Gown', brand:'Trendy Styles', price:'₱2,500', img:'https://source.unsplash.com/200x150/?gown,fashion'},
-            {name:'Leather Shoes', brand:'Footwork', price:'₱1,200', img:'https://source.unsplash.com/200x150/?shoes,fashion'},
-            {name:'Floral Perfume', brand:'Scentify', price:'₱850', img:'https://source.unsplash.com/200x150/?perfume'}
-        ];
+    if(section === 'cravings'){
+        // Example using a public API like Pexels for demo
+        const response = await axios.get(`https://api.pexels.com/v1/search?query=${encodeURIComponent(mood)} food&per_page=5`, {
+            headers: { Authorization: 'YOUR_PEXELS_API_KEY' }
+        });
+        recommendations = response.data.photos.map(photo => ({
+            name: photo.alt || "Delicious Food",
+            brand: "Trending Vendor",
+            price: "₱" + Math.floor(Math.random() * 300 + 50),
+            img: photo.src.medium
+        }));
+    } else if(section === 'ootd'){
+        const response = await axios.get(`https://api.pexels.com/v1/search?query=${encodeURIComponent(mood)} fashion&per_page=5`, {
+            headers: { Authorization: 'YOUR_PEXELS_API_KEY' }
+        });
+        recommendations = response.data.photos.map(photo => ({
+            name: photo.alt || "Stylish Outfit",
+            brand: "Trending Brand",
+            price: "₱" + Math.floor(Math.random() * 3000 + 500),
+            img: photo.src.medium
+        }));
     }
 
     res.json({ recommendations });
 });
-
-app.listen(process.env.PORT || 3000, () => console.log("Backend running"));

@@ -1,0 +1,14 @@
+{
+  "name": "moodbuy-backend",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "node-fetch": "^3.4.1"
+  },
+  "type": "module"
+}

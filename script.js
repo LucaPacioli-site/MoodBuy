@@ -20,7 +20,7 @@ function processMood(){
   if(!mood){ alert("Enter mood"); return; }
 
   // Replace with your backend API URL
-  fetch('https://YOUR_BACKEND_URL/api/recommend',{
+  fetch('https://lucapacioli-site.github.io/MoodBuy/',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
     body: JSON.stringify({section:currentSection,mood})

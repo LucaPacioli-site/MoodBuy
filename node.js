@@ -8,7 +8,8 @@
   "dependencies": {
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "node-fetch": "^3.4.1"
+    "node-fetch": "^3.4.1",
+    "cors": "^2.8.5"
   },
   "type": "module"
 }

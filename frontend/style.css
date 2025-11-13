@@ -1,0 +1,33 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+}
+
+textarea {
+  width: 80%;
+  height: 80px;
+  margin: 1rem 0;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  border: none;
+  background-color: #ff7eb3;
+  color: white;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+pre {
+  text-align: left;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  white-space: pre-wrap;
+}
